@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Welcome</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: linear-gradient(rgba(0, 0, 0, 0.747), rgb(250, 58, 170));
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+
+    .page {
+      display: none;
+      text-align: center;
+    }
+
+    .page.active {
+      display: block;
+    }
+
+    h1, h2 {
+      margin-bottom: 20px;
+      font-size: 50px;
+    }
+
+    button {
+      padding: 12px 24px;
+      margin: 10px;
+      font-size: 16px;
+      cursor: pointer;
+      border: none;
+      border-radius: 6px;
+      background-color: #fdfdfd9c;
+      color: rgb(0, 0, 0);
+      transition: background 0.3s;
+    }
+
+    button:hover {
+      background-color: #c01e9d;
+    }
+
+    /* Flower Design */
+    .flower {
+      position: relative;
+      width: 120px;
+      height: 120px;
+      margin: 0 auto;
+    }
+
+    .petal {
+      position: absolute;
+      width: 60px;
+      height: 60px;
+      background: pink;
+      border-radius: 50%;
+    }
+
+    .petal:nth-child(1) { top: 0; left: 30px; }
+    .petal:nth-child(2) { top: 30px; left: 0; }
+    .petal:nth-child(3) { top: 30px; right: 0; }
+    .petal:nth-child(4) { bottom: 0; left: 30px; }
+
+    .center {
+      position: absolute;
+      top: 35px;
+      left: 35px;
+      width: 50px;
+      height: 50px;
+      background: yellow;
+      border-radius: 50%;
+    }
+
+    /* ===== MOBILE SIZE SUPPORT (ADDED) ===== */
+    @media (max-width: 600px) {
+      body {
+        padding: 20px;
+      }
+
+      h1, h2 {
+        font-size: 32px;
+      }
+
+      button {
+        width: 100%;
+        max-width: 260px;
+        font-size: 16px;
+        padding: 14px;
+      }
+
+      .flower {
+        width: 100px;
+        height: 100px;
+      }
+
+      .petal {
+        width: 50px;
+        height: 50px;
+      }
+
+      .petal:nth-child(1) { top: 0; left: 25px; }
+      .petal:nth-child(2) { top: 25px; left: 0; }
+      .petal:nth-child(3) { top: 25px; right: 0; }
+      .petal:nth-child(4) { bottom: 0; left: 25px; }
+
+      .center {
+        width: 40px;
+        height: 40px;
+        top: 30px;
+        left: 30px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Page 1 -->
+  <div class="page active" id="page1">
+    <h1>HELLO!</h1>
+    <button onclick="nextPage(2)">Press</button>
+  </div>
+
+  <!-- Page 2 -->
+  <div class="page" id="page2">
+    <h2>How are you today?</h2>
+    <button onclick="nextPage(3)">I'm fine</button>
+    <button onclick="nextPage(3)">It's not fine</button>
+  </div>
+
+  <!-- Page 3 -->
+  <div class="page" id="page3">
+    <h2>Are you still interested in talking to me?</h2>
+    <button onclick="nextPage(4)">Yes</button>
+    <button onclick="nextPage(4)">No</button>
+  </div>
+
+  <!-- Page 4 -->
+  <div class="page" id="page4">
+    <h2>With your permission can I get to know you more?</h2>
+    <button onclick="nextPage(5)">Yes</button>
+    <button onclick="nextPage(5)">No</button>
+  </div>
+
+  <!-- Final Page -->
+  <div class="page" id="page5">
+    <h2>🌸 A Flower for You My Love 🌸</h2>
+    <div class="flower">
+      <div class="petal"></div>
+      <div class="petal"></div>
+      <div class="petal"></div>
+      <div class="petal"></div>
+      <div class="center"></div>
+    </div>
+  </div>
+
+  <script>
+    function nextPage(pageNumber) {
+      const pages = document.querySelectorAll('.page');
+      pages.forEach(page => page.classList.remove('active'));
+      document.getElementById('page' + pageNumber).classList.add('active');
+    }
+  </script>
+
+</body>
+</html>
